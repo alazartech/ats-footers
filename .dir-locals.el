@@ -1,0 +1,15 @@
+((nil . ((projectile-project-compilation-cmd
+          .
+          "cd build && cmake .. && cmake --build .")))
+ (c-mode . ((indent-tabs-mode . nil)
+            (tab-width . 4)
+            (c-basic-offset . 4)
+            (c-basic-indent . 4)
+            (c-default-style . "linux")
+            (eval . (c-set-offset 'substatement-open 0))))
+ (c++-mode . ((indent-tabs-mode . nil)
+              (tab-width . 4)
+              (c-basic-offset . 4)
+              (c-basic-indent . 4)
+              (c-default-style . "linux")
+              (eval . (c-set-offset 'substatement-open 0)))))
