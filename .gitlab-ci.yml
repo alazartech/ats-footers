@@ -38,6 +38,7 @@ deploy:tag:
   script:
     - pipenv install
     - pipenv run changelogparser version -i CHANGELOG.md -o release-version.txt
+    - git fetch
     - git checkout master
     - git pull origin master
     - git merge --ff-only origin/${CI_COMMIT_REF_NAME}
