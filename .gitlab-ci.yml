@@ -55,6 +55,8 @@ deploy:tag:
 deploy:lib:
   script:
     - pipenv install
+    - pipenv run createversionfile
+    - set /p VERSION=<version.txt
     - If "%CI_COMMIT_TAG%"=="" (set DEST=C:\public\Software\nightly\%CI_PROJECT_NAME%\%CI_PROJECT_NAMESPACE%\%CI_BUILD_REF_NAME%) Else (set DEST=C:\public\Software\Utilities\ats-footers\v%VERSION%)
     - pipenv run deploy deploy-windows.yaml %CI_PROJECT_NAME% "%DEST%"
   stage: deploy
