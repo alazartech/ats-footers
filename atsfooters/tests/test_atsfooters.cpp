@@ -157,6 +157,7 @@ static const footer_data_file_config footer_data_file_configs[] = {
     {"data-ats9350-fft-1ch-2112.bin", {ats_board_type::ats9350, ats_data_domain::frequency, 1,          ats_data_layout::sample_interleaved, 2112      , 2       , false }, 2        , 500e3          },
     {"data-ats9352-2ch.bin",          {ats_board_type::ats9352, ats_data_domain::time,      2,          ats_data_layout::buffer_interleaved, 2048 * 2  , 2       , false }, 2        , 500e3          },
     {"data-ats9352-2ch-fifo.bin",     {ats_board_type::ats9352, ats_data_domain::time,      2,          ats_data_layout::sample_interleaved, 2048 * 2  , 2       , true  }, 2        , 500e3          },
+    {"data-ats9352-fft-2ch-4128.bin", {ats_board_type::ats9352, ats_data_domain::frequency, 2,          ats_data_layout::record_interleaved, 4128      , 2       , false }, 2        , 2e3            },
 };
 // clang-format on
 

@@ -46,7 +46,7 @@ class Enumeration(c_uint):
                 self.name = k
                 break
         else:
-            raise ValueError("No enumeration member with value %r" % self.value)
+            self.name = str(self.value)
 
     def __init__(self, value):
         c_uint.__init__(self, value)
@@ -70,8 +70,8 @@ class Enumeration(c_uint):
 
 def _rccheck(result, func, arguments):
     if (result != 0):
-        raise Exception("Error calling function %s with arguments %s : %s" %
-                        (func.__name__, str(arguments), str(result)))
+        raise Exception("Error calling function %s with arguments %s : %s. Error string: %s" %
+                        (func.__name__, str(arguments), str(result), str(arguments[-2].value)))
 
 class PrintableStructure(Structure):
     def __repr__(self):
