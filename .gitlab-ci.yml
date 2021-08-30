@@ -1,3 +1,21 @@
+stages:
+  - resources
+  - build
+  - test
+  - deploy
+
+resources:
+  image: alazartech/doc:1.9.5
+  script:
+    - pipenv install
+    - pipenv run changelogparser version -i CHANGELOG.md -o version.txt
+  stage: resources
+  artifacts:
+    paths:
+      - version.txt
+    expire_in: 1 month
+  tags:
+    - docker
 
 build:library:
   stage: build
@@ -55,10 +73,20 @@ deploy:tag:
 deploy:lib:
   script:
     - pipenv install
-    - pipenv run createversionfile
     - set /p VERSION=<version.txt
     - If "%CI_COMMIT_TAG%"=="" (set DEST=C:\public\Software\nightly\%CI_PROJECT_NAME%\%CI_PROJECT_NAMESPACE%\%CI_BUILD_REF_NAME%) Else (set DEST=C:\public\Software\Utilities\ats-footers\v%VERSION%)
     - pipenv run deploy deploy-windows.yaml %CI_PROJECT_NAME% "%DEST%"
   stage: deploy
   tags:
     - windows
+
+deploy:conan:
+  stage: deploy
+  image: alazartech/vs2019:1.9.5
+  script:
+    - $VERSION = Get-Content -Path version.txt
+    - $channel = If ($CI_COMMIT_TAG) {"stable"} Else {${CI_COMMIT_REF_NAME}}
+    - conan create . atsfooters/${VERSION}@alazar/${channel}
+    - conan upload -r ottawa --all atsfooters/${VERSION}@alazar/${channel}
+  tags:
+    - docker-windows

@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to `ats-footers` are documented here.
 
+## [0.2.1] - 2021-08-30
+### Added
+- Conan package. [#3]
+
+
 ## [0.2.0] - 2021-07-19
 ### Added
 - Python wrapper
