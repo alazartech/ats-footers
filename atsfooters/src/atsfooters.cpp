@@ -1,6 +1,7 @@
 #include "atsfooters.hpp"
 
 #include <iostream>
+#include <string.h>
 #include <vector>
 
 #include "atsfooters_internal.hpp"

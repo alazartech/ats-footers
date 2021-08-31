@@ -33,6 +33,15 @@ build:library:
   tags:
     - docker-windows
 
+build:library_gcc9:
+  stage: build
+  image: alazartech/gcc9:1.9.5
+  script:
+    - conan install . --install-folder=build
+    - conan build . --build-folder=build
+  tags:
+    - docker
+
 test:dotnet:
   stage: test
   image: alazartech/vs2019:1.9.5
