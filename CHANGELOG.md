@@ -5,6 +5,8 @@ All notable changes to `ats-footers` are documented here.
 ### Added
 - Conan package. [#3]
 
+### Fixed
+- Dual-channel footer parsing for ATS9146. [#6]
 
 ## [0.2.0] - 2021-07-19
 ### Added

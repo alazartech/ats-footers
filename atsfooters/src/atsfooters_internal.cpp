@@ -133,6 +133,7 @@ record_footer_embedding get_record_footer_embedding(ats_board_type board_type,
     case ats_board_type::ats9130:
     case ats_board_type::ats9416:
         return record_footer_embedding::raw_buffer;
+    case ats_board_type::ats9146:
     case ats_board_type::ats9352:
     case ats_board_type::ats9353:
         return fifo ? record_footer_embedding::raw_buffer
