@@ -79,16 +79,6 @@ deploy:tag:
   only:
     - release
 
-deploy:lib:
-  script:
-    - pipenv install
-    - set /p VERSION=<version.txt
-    - If "%CI_COMMIT_TAG%"=="" (set DEST=C:\public\Software\nightly\%CI_PROJECT_NAME%\%CI_PROJECT_NAMESPACE%\%CI_BUILD_REF_NAME%) Else (set DEST=C:\public\Software\Utilities\ats-footers\v%VERSION%)
-    - pipenv run deploy deploy-windows.yaml %CI_PROJECT_NAME% "%DEST%"
-  stage: deploy
-  tags:
-    - windows
-
 deploy:conan:
   stage: deploy
   image: alazartech/vs2019:1.9.5
