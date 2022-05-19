@@ -34,7 +34,7 @@ target_include_directories(test_atsfooters
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/tests
     ${CMAKE_CURRENT_LIST_DIR}/src)
-add_test(test_atsfooters ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_atsfooters)
+add_test(test_atsfooters Debug/test_atsfooters.exe)
 
 
 file(GLOB BINARY_FILES "tests/*.bin")

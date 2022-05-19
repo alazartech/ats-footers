@@ -136,6 +136,7 @@ record_footer_embedding get_record_footer_embedding(ats_board_type board_type,
     case ats_board_type::ats9146:
     case ats_board_type::ats9352:
     case ats_board_type::ats9353:
+    case ats_board_type::ats9872:
         return fifo ? record_footer_embedding::raw_buffer
                     : record_footer_embedding::channel_data_one_per_channel;
     default:
