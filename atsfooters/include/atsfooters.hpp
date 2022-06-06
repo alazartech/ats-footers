@@ -2,7 +2,6 @@
 #define ATS_FOOTERS
 
 #include <cassert>
-#include <cstdbool>
 #include <cstddef>
 #include <cstdint>
 #include <vector>
