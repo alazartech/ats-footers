@@ -108,6 +108,17 @@ enum class ats_board_type {
     ats9872 = 45,
     ats9470 = 46,
     ats9628 = 47,
+    ats9874 = 48,
+    ats9473 = 49,
+    ats9280 = 50,
+    ats4001 = 51,
+    ats9182 = 52,
+    ats9364 = 53,
+    ats9442 = 54,
+    ats9376 = 55,
+    ats9380 = 56,
+    ats9428 = 57,
+
 };
 
 enum class ats_data_domain {

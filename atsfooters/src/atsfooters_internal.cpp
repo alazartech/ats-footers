@@ -74,6 +74,7 @@ size_t resolution_bits(ats_board_type board_type) {
     case ats_board_type::ats9373:
     case ats_board_type::forest:
     case ats_board_type::ats9353:
+    case ats_board_type::ats9364:
         return 12;
     case ats_board_type::ats460:
     case ats_board_type::ats9434:
@@ -132,6 +133,7 @@ record_footer_embedding get_record_footer_embedding(ats_board_type board_type,
     switch (board_type) {
     case ats_board_type::ats9130:
     case ats_board_type::ats9416:
+    case ats_board_type::ats9364:
         return record_footer_embedding::raw_buffer;
     case ats_board_type::ats9146:
     case ats_board_type::ats9352:
@@ -261,14 +263,12 @@ get_internal_footer_locations(ats_footer_configuration configuration,
             for (size_t c = 0; c < active_channel_count; c++) {
                 for (size_t s = 0;
                      s < samples_per_footer / active_channel_count; s++) {
-                    const size_t source_offset
-                        = (size_t)(buf * buffer_stride_bytes
-                                   + r * record_stride_bytes
-                                   + c * channel_stride_bytes
-                                   + (samples_per_record
-                                      - footer_block_size_samples_per_channel
-                                      + s)
-                                         * sample_stride_bytes);
+                    const size_t source_offset = (size_t)(
+                        buf * buffer_stride_bytes + r * record_stride_bytes
+                        + c * channel_stride_bytes
+                        + (samples_per_record
+                           - footer_block_size_samples_per_channel + s)
+                              * sample_stride_bytes);
                     output[footer].parts.push_back({
                         source_offset,
                         bytes_per_sample,
@@ -285,12 +285,10 @@ get_internal_footer_locations(ats_footer_configuration configuration,
             break;
         case record_footer_embedding::channel_data_one_per_channel:
             for (size_t s = 0; s < samples_per_footer; s++) {
-                const size_t source_offset
-                    = (size_t)(buf * buffer_stride_bytes
-                               + r * record_stride_bytes
-                               + (samples_per_record - footer_block_size_samples
-                                  + s)
-                                     * sample_stride_bytes);
+                const size_t source_offset = (size_t)(
+                    buf * buffer_stride_bytes + r * record_stride_bytes
+                    + (samples_per_record - footer_block_size_samples + s)
+                          * sample_stride_bytes);
                 output[footer].parts.push_back(
                     {source_offset, bytes_per_sample});
             }

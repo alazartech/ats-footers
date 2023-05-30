@@ -42,6 +42,7 @@ ats_footer_type get_ats_footer_type(ats_board_type board_type) {
     case ats_board_type::ats9120:
     case ats_board_type::ats9371:
     case ats_board_type::ats9130:
+    case ats_board_type::ats9364:
         return ats_footer_type::type_0;
     case ats_board_type::ats9352:
         return ats_footer_type::type_1;
@@ -75,8 +76,9 @@ void ats_parse_footers(span<char> data, ats_footer_configuration configuration,
 
     const auto locs
         = get_internal_footer_locations(configuration, footers.size());
-    parse_internal_footers(data, locs,
-                           span(internals.data(), internals.size()));
+    parse_internal_footers(
+        data, locs,
+        span<ats_footer_internal>(internals.data(), internals.size()));
     for (size_t i = 0; i < footers.size(); i++)
         parse_footer(&internals[i], &footers[i]);
 }
@@ -91,8 +93,9 @@ void ats_parse_footers(span<char> data, ats_footer_configuration configuration,
 
     const auto locs
         = get_internal_footer_locations(configuration, footers.size());
-    parse_internal_footers(data, locs,
-                           span(internals.data(), internals.size()));
+    parse_internal_footers(
+        data, locs,
+        span<ats_footer_internal>(internals.data(), internals.size()));
     for (size_t i = 0; i < footers.size(); i++)
         parse_footer(&internals[i], &footers[i]);
 }
