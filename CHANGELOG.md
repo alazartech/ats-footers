@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to `ats-footers` are documented here.
 
+## [0.2.1] - 2023-12-19
+### Added
+- Support for ATS4001.
+- Support for ATS9364.
+
 ## [0.2.1] - 2021-08-30
 ### Added
 - Support for ATS9872. [#7]

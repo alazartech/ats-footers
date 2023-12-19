@@ -75,6 +75,7 @@ size_t resolution_bits(ats_board_type board_type) {
     case ats_board_type::forest:
     case ats_board_type::ats9353:
     case ats_board_type::ats9364:
+    case ats_board_type::ats4001:
         return 12;
     case ats_board_type::ats460:
     case ats_board_type::ats9434:

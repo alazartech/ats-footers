@@ -43,6 +43,7 @@ ats_footer_type get_ats_footer_type(ats_board_type board_type) {
     case ats_board_type::ats9371:
     case ats_board_type::ats9130:
     case ats_board_type::ats9364:
+    case ats_board_type::ats4001:
         return ats_footer_type::type_0;
     case ats_board_type::ats9352:
         return ats_footer_type::type_1;
